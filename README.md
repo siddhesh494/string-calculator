@@ -68,3 +68,11 @@
   return numArray.reduce((sum, num) => sum + num, 0);
   ```
 
+# Step 4 - Handle any amount of numbers (still comma-separated)
+- Add a test for multiple numbers
+  ```js
+    test('returns sum of multiple comma-separated numbers', () => {
+      expect(add("1,2,3,4")).toBe(10);
+    });
+  ```
+- No changes needed to implementation!
