@@ -55,3 +55,16 @@
   return parseInt(numbers);
   ```
 
+# Step 3 - Handle two comma-separated numbers
+- Add a test for two numbers
+  ```js
+    test('returns sum of two comma-separated numbers', () => {
+      expect(add("1,2")).toBe(3);
+    });
+  ```
+- Update implementation to pass the test
+  ```js
+  const numArray = numbers.split(",").map(Number);
+  return numArray.reduce((sum, num) => sum + num, 0);
+  ```
+
