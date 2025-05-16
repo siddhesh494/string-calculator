@@ -9,7 +9,7 @@ function add(numbers) {
     const matches = delimiterSpec.match(/\[([^\]]+)\]/g);
     if (matches) {
       const delimiters = matches.map(d =>
-        d.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        escapeRegExp(d.slice(1, -1))
       );
       delimiter = new RegExp(delimiters.join("|"));
     } else {
@@ -18,7 +18,6 @@ function add(numbers) {
 
     numbers = parts[1];
   }
-  console.log("delimiter", delimiter)
 
   const numArray = numbers.split(delimiter).map(Number);
 
@@ -31,5 +30,10 @@ function add(numbers) {
     .filter(num => num <= 1000)
     .reduce((sum, num) => sum + num, 0)
 }
+
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 
 module.exports = { add };
