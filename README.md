@@ -153,3 +153,30 @@
   });
   ```
 
+# Step 10 - Handle for multiple custom delimiters of any length
+- Test
+  ```js
+  test('supports multiple custom delimiters', () => {
+    expect(add("//[*][%]\n1*2%3")).toBe(6);
+  });
+
+  test('supports multiple delimiters of any length', () => {
+    expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+  });
+
+  ```
+
+- Update implementation to handle multiple delimiters
+  ```js
+    const delimiterSpec = parts[0].slice(2);
+
+    const matches = delimiterSpec.match(/\[([^\]]+)\]/g);
+    if (matches) {
+      const delimiters = matches.map(d =>
+        d.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      );
+      delimiter = new RegExp(delimiters.join("|"));
+    } else {
+      delimiter = new RegExp(delimiterSpec);
+    }
+  ```

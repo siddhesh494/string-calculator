@@ -4,9 +4,21 @@ function add(numbers) {
   let delimiter = /,|\n/; // default delimiters
   if (numbers.startsWith("//")) {
     const parts = numbers.split("\n");
-    delimiter = new RegExp(parts[0].slice(2)); // extract custom delimiter
+    const delimiterSpec = parts[0].slice(2);
+
+    const matches = delimiterSpec.match(/\[([^\]]+)\]/g);
+    if (matches) {
+      const delimiters = matches.map(d =>
+        d.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      );
+      delimiter = new RegExp(delimiters.join("|"));
+    } else {
+      delimiter = new RegExp(delimiterSpec);
+    }
+
     numbers = parts[1];
   }
+  console.log("delimiter", delimiter)
 
   const numArray = numbers.split(delimiter).map(Number);
 
