@@ -76,3 +76,16 @@
     });
   ```
 - No changes needed to implementation!
+
+# Step 5 - Supporting newlines as separators (\n) in addition to commas
+- Add a test for newline and comma as mixed delimiters
+  ```js
+  test('handles newlines as delimiters along with commas', () => {
+    expect(add("1\n2,3")).toBe(6);
+  });
+  ```
+- Update the implementation to split on both , and \n
+  ```js
+  const numArray = numbers.split(/,|\n/).map(Number);
+  ```
+
