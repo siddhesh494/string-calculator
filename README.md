@@ -144,3 +144,12 @@
     .filter(num => num <= 1000)
     .reduce((sum, num) => sum + num, 0);
   ```
+
+# Step 9 - Custom delimiters of any length
+- Test
+  ```js
+  test('supports custom delimiter of any length using brackets', () => {
+    expect(add("//[***]\n1***2***3")).toBe(6);
+  });
+  ```
+
