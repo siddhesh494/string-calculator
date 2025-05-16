@@ -27,3 +27,11 @@ test('supports custom delimiter defined with // at the start', () => {
 test('supports different custom delimiter "-"', () => {
   expect(add("//-\n4-5-6")).toBe(15);
 });
+
+test('throws exception when negative number is present', () => {
+  expect(() => add("1,-2,3")).toThrow("negative numbers not allowed -2");
+});
+
+test('throws exception with all negative numbers listed', () => {
+  expect(() => add("-1,2,-3")).toThrow("negative numbers not allowed -1,-3");
+});
