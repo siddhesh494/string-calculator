@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode settings
+.vscode/
+
+# Jest cache and coverage
+coverage/
+jest-cache/
+jest-config/
+
+# OS-specific
+.DS_Store
+Thumbs.db
