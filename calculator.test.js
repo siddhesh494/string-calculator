@@ -39,3 +39,7 @@ test('ignores numbers greater than 1000', () => {
 test('sums only numbers <= 1000 when mixed with large numbers', () => {
   expect(add("1000,1,1001,2")).toBe(1003);
 });
+
+test('supports custom delimiter of any length using brackets', () => {
+  expect(add("//[***]\n1***2***3")).toBe(6);
+});
