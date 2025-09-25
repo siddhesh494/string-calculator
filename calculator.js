@@ -28,7 +28,9 @@ function add(numbers) {
   }
 
   let sum = 0
-  numArray.forEach((n) => sum += n)
+  numArray.forEach((n) => {
+    if(n <= 1000) sum += n  // handle number greater than 1000
+  })
   return sum
 }
 
