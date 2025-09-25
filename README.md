@@ -110,3 +110,22 @@
 
   const numArray = numbers.split(delimiter).map(Number);
   ```
+
+## Step 7 - Handle negative number input.
+- Add test for negative numbers
+  ```js
+    test('throws exception when negative number is present', () => {
+      expect(() => add("1,-2,3")).toThrow("negative numbers not allowed -2");
+    });
+
+    test('throws exception with all negative numbers listed', () => {
+      expect(() => add("-1,2,-3")).toThrow("negative numbers not allowed -1,-3");
+    });
+  ```
+- Update implementation to handle negatives
+  ```js
+  const negatives = numArray.filter(num => num < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
+  }
+  ```

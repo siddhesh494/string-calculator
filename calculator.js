@@ -20,6 +20,13 @@ function add(numbers) {
 
   numString = replaceWithComma(numString, delimiterPattern);
   const numArray = numString.split(",").map(Number);
+  
+  // handle negative number
+  const negatives = numArray.filter(num => num < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
+  }
+
   let sum = 0
   numArray.forEach((n) => sum += n)
   return sum
