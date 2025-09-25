@@ -53,7 +53,7 @@
   return parseInt(numbers);
   ```
 
-# Step 3 - Handle two comma-separated numbers
+## Step 3 - Handle two comma-separated numbers
 - Add a test for two numbers
   ```js
     test('returns sum of two comma-separated numbers', () => {
@@ -67,3 +67,12 @@
     numArray.forEach((n) => sum += n)
     return sum
   ```
+
+## Step 4 - Handle any amount of numbers (still comma-separated)
+- Add a test for multiple numbers
+  ```js
+    test('returns sum of multiple comma-separated numbers', () => {
+      expect(add("1,2,3,4")).toBe(10);
+    });
+  ```
+- No changes needed to implementation!
