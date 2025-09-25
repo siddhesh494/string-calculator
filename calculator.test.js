@@ -43,3 +43,11 @@ test('sums only numbers <= 1000 when mixed with large numbers', () => {
 test('supports custom delimiter of any length using brackets', () => {
   expect(add("//[***]\n1***2***3")).toBe(6);
 });
+
+test('supports multiple custom delimiters', () => {
+  expect(add("//[*][%]\n1*2%3")).toBe(6);
+});
+
+test('supports multiple delimiters of any length', () => {
+  expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+});

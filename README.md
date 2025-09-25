@@ -155,3 +155,15 @@
     expect(add("//[***]\n1***2***3")).toBe(6);
   });
   ```
+
+## Step 10 - Handle for multiple custom delimiters of any length
+- Test
+  ```js
+  test('supports multiple custom delimiters', () => {
+    expect(add("//[*][%]\n1*2%3")).toBe(6);
+  });
+
+  test('supports multiple delimiters of any length', () => {
+    expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+  });
+  ```
