@@ -40,3 +40,15 @@
 
   module.exports = { add };
   ```
+
+## Step 2 - Handle a single number input.
+- Add a test for a single number
+  ```javascript
+  test('returns number itself when only one number is provided', () => {
+    expect(add("1")).toBe(1);
+  });
+  ```
+- Update implementation to pass the new test
+  ```javascript
+  return parseInt(numbers);
+  ```
