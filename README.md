@@ -91,3 +91,22 @@
   }
   numbers = replaceWithComma(numbers)
   ```
+
+## Step 6 - Custom delimiters with the //[delimiter]\n[numbers] syntax.
+- Add a test for custom delimiter
+  ```js
+    test('supports custom delimiter defined with // at the start', () => {
+      expect(add("//;\n1;2")).toBe(3);
+    });
+  ```
+- Update implementation to handle custom delimiter
+  ```js
+  let delimiter = /,|\n/; // default delimiters
+  if (numbers.startsWith("//")) {
+    const parts = numbers.split("\n");
+    delimiter = new RegExp(parts[0].slice(2)); // extract custom delimiter
+    numbers = parts[1];
+  }
+
+  const numArray = numbers.split(delimiter).map(Number);
+  ```
