@@ -129,3 +129,21 @@
     throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
   }
   ```
+
+## Step 8 - Ignoring numbers > 1000
+- Test case
+  ```js
+    test('ignores numbers greater than 1000', () => {
+      expect(add("2,1001")).toBe(2);
+    });
+
+    test('sums only numbers <= 1000 when mixed with large numbers', () => {
+      expect(add("1000,1,1001,2")).toBe(1003);
+    });
+  ```
+- Update implementation to ignore numbers > 1000
+  ```js
+    numArray.forEach((n) => {
+      if(n <= 1000) sum += n
+    })
+  ```
